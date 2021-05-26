@@ -24,7 +24,3 @@ model_error = round(np.sqrt(mean_squared_error(y_preds, y_test)), 2)
 
 # Print metric
 print(model_error)
-
-
-
-
