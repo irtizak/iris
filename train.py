@@ -4,14 +4,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import mean_squared_error
 import numpy as np
 
+# Set random seed
+rseed = 786
+
 # Load data
 X, y = load_iris(return_X_y=True)
 
 # Create train test splits
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=786)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=rseed)
 
 # Declare model
-clf = RandomForestClassifier(random_state=786)
+clf = RandomForestClassifier(random_state=rseed)
 
 # Fit model
 clf.fit(X_train, y_train)
