@@ -2,7 +2,7 @@ name: train-pipeline
 on: [push]
 jobs:
   run:
-    runs-on: [ubuntu-latest]
+    # runs-on: [ubuntu-latest]
     # optionally use a convenient Ubuntu LTS + CUDA + DVC + CML image
     container: docker://continuumio/anaconda3
     steps:
