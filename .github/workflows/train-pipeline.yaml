@@ -16,8 +16,9 @@ jobs:
 
       - name: Train model
         run: |
+          conda activate test
           conda install scikit-learn
-          python3 train.py
+          python train.py
 
       - name: Write CML report
         env:
