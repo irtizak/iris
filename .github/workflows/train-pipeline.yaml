@@ -16,7 +16,7 @@ jobs:
 
       - name: Train model
         run: |
-          source activate test
+        shell: powershell
           conda install scikit-learn
           python train.py
 
