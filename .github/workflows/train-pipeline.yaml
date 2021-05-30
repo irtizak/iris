@@ -16,14 +16,15 @@ jobs:
 
       - name: Train model
         run: |
-          conda install scikit-learn
+          conda create --name iris --file requirements.txt
+          source activate iris
           python train.py
 
-      - name: Write CML report
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Post reports as comments in GitHub PRs
-          echo "MODEL METRICS"
-          cat metrics.txt >> report.md
-          cml-send-comment report.md
+      # - name: Write CML report
+      #   env:
+      #     REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     # Post reports as comments in GitHub PRs
+      #     echo "MODEL METRICS"
+      #     cat metrics.txt >> report.md
+      #     cml-send-comment report.md
