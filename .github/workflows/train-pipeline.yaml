@@ -11,16 +11,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
   
-      - name: Setup Conda
-        uses: conda-incubator/setup-miniconda@v2
-
-      - name: Train model
-        shell: pwsh
+      - name: Create Conda Environment
         run: |
-          conda create --name iris --file requirements.txt
-          conda activate iris
-          conda list
-          python train.py
+          echo 'Update apt...'
+          apt update
+          echo 'Install wget...'
+          apt install -y wget
+          echo 'Download Miniconda...'
+          wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+          mkdir root/.conda
+          echo 'Install Miniconda...'
+          sh Miniconda3-py39_4.9.2-Linux-x86_64.sh
+          echo 'Remove Miniconda file...'
+          rm -f Miniconda3-py39_4.9.2-Linux-x86_64.sh
+#       - name: Setup Conda
+#         uses: conda-incubator/setup-miniconda@v2
+
+#       - name: Train model
+#         run: |
+#           conda create --name iris --file requirements.txt
+#           conda activate iris
+#           conda list
+#           python train.py
 
       # - name: Write CML report
       #   env:
