@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Train Model
-        env: repo_token: $(( secrets.GITHUB_TOKEN ))
+        env: 
+          repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |
          pip install -r requirements.txt
          python train.py
