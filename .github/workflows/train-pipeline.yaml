@@ -20,7 +20,7 @@ jobs:
           conda create --name iris --file requirements.txt
           conda activate iris
           conda list
-          python3 train.py
+          python train.py
 
       # - name: Write CML report
       #   env:
