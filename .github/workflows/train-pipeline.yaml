@@ -17,9 +17,7 @@ jobs:
       - name: Train model
         run: |
           conda create --name iris --file requirements.txt
-          conda init powershell
-          conda activate iris
-          python train.py
+          conda list
 
       # - name: Write CML report
       #   env:
