@@ -10,20 +10,20 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-  
-      - name: Setup Conda
-        uses: s-weigand/setup-conda@v1
-
-      - name: Train model
+        
+      - name: Train Model
+        env: 
+          repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |
-          conda install scikit-learn
-          python train.py
+         pip install -r requirements.txt
+         python train.py
 
-      - name: Write CML report
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Write CML Report
         run: |
-          # Post reports as comments in GitHub PRs
-          echo "MODEL METRICS"
-          cat metrics.txt >> report.md
-          cml-send-comment report.md
+         echo "MODEL METRICS"
+       #  cat metrics.txt
+      
+      #     # Post reports as comments in GitHub PRs
+      #     echo "MODEL METRICS"
+      #     cat metrics.txt >> report.md
+      #     cml-send-comment report.md
