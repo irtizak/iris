@@ -17,7 +17,7 @@ jobs:
       - name: Train model
         run: |
           conda create --name iris --file requirements.txt
-          source activate iris
+          conda activate iris
           python train.py
 
       # - name: Write CML report
