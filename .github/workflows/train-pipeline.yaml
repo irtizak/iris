@@ -19,6 +19,7 @@ jobs:
         run: |
           conda create --name iris --file requirements.txt
           conda activate iris
+          conda list
 
       # - name: Write CML report
       #   env:
