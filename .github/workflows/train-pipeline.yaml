@@ -6,7 +6,7 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     # optionally use a convenient Ubuntu LTS + CUDA + DVC + CML image
-    container: docker://alpine
+#     container: docker://alpine
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
