@@ -15,13 +15,13 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: cml
+      - name: Train Model
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip3 install -r requirements.txt
           python3 train.py
           
-          cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+          cat model/metrics.txt >> report.md
+          cml-publish model/confusion_matrix.png --md --title 'confusion-matrix' >> report.md
           cml-send-comment report.md 
