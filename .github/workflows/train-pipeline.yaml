@@ -22,6 +22,7 @@ jobs:
           echo 'Training complete!'
 
       - name: Write CML Report
+        uses: iterative/setup-cml@v1
         env: 
           repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |      
