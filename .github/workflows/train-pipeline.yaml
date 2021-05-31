@@ -1,36 +1,27 @@
-name: train-pipeline
+name: train-my-model
 
 on: [push]
 
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    # optionally use a convenient Ubuntu LTS + CUDA + DVC + CML image
-    # container: docker://dvcorg/cml-py3:latest
-    
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Install CML
-        uses: iterative/setup-cml@v1
+      - uses: iterative/setup-cml@v1
 
-      - name: Install Python
-        uses: actions/setup-python@v2
-        
-      - name: Train Model
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: cml
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo 'Install dependencies...'
           pip3 install -r requirements.txt
-          echo 'Train Model...'
           python3 train.py
-          echo 'Training complete!'
-
-      - name: Write CML Report
-        env: 
-          repo_token: $(( secrets.GITHUB_TOKEN ))
-        run: |      
+          
           cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md >> report.md
-          cml-publish feature_importance.png --md >> report.md
-          cml-send-comment report.md
+          cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+          cml-send-comment report.md 
