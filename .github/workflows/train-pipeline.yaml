@@ -1,4 +1,4 @@
-name: train-my-model
+name: train-model
 
 on: [push]
 
@@ -24,4 +24,5 @@ jobs:
           
           cat model/metrics.txt >> report.md
           cml-publish model/confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+          cml-publish model/feature_importance.png --md --title 'feature-importance' >> report.md
           cml-send-comment report.md 
