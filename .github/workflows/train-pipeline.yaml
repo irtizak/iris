@@ -25,10 +25,10 @@ jobs:
         env: 
           repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |      
-         echo '## Model Metrics' > report.md
+         echo '## Model Metrics' >> report.md
          cat model/metrics.txt >> report.md
 
-         echo '## Performance Plots' > report.md
+         echo '## Performance Plots' >> report.md
          cml-publish model/confusion_matrix.png --md >> report.md
          cml-publish model/feature_importance.png --md >> report.md
          
