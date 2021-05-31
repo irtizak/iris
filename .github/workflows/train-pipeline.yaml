@@ -19,8 +19,6 @@ jobs:
         uses: actions/setup-python@v2
         
       - name: Train Model
-        env: 
-          repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |
           echo 'Install dependencies...'
           pip3 install -r requirements.txt
