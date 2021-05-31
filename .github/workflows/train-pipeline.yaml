@@ -22,6 +22,8 @@ jobs:
          echo 'Training complete!'
 
       - name: Write CML Report
+        env: 
+          repo_token: $(( secrets.GITHUB_TOKEN ))
         run: |      
          echo '## Model Metrics' > report.md
          cat model/metrics.txt >> report.md
