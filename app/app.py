@@ -1,4 +1,3 @@
-# This file is to test ideas
 import joblib
 import streamlit as st
 import numpy as np
