@@ -14,11 +14,11 @@ RUN pip install -r requirements.txt
 # copying all files over
 COPY . /app
 
-# Expose port 
-ENV PORT 8501
+# Expose port (Default was 8051, but changed for Azure App Service port matching)
+ENV PORT 80
 
 # cmd to launch app when container is run
-CMD streamlit run app.py
+CMD streamlit run app/app.py
 
 # streamlit-specific commands for config
 ENV LC_ALL=C.UTF-8
