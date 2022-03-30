@@ -1,0 +1,10 @@
+cat > test2.txt
+git status
+
+
+
+exit
+
+
+
+
